@@ -78,7 +78,7 @@ python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] 
 
 Take ResNet18 on CIFAR10 training with Fisher-SparseSAM as an example.
 ```bash
-python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt ssamf-sgd --weight_decay 1e-3 --sparsity 0.5 --num_samples 16 --update_freq 1 --seed [Maybe3107?] --wandb
+python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt ssamf-sgd --rho 0.1 --weight_decay 1e-3 --sparsity 0.5 --num_samples 16 --update_freq 1 --seed [Maybe3107?] --wandb
 ```
 
 ## Citation
