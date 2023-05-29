@@ -80,6 +80,10 @@ Take ResNet18 on CIFAR10 training with Fisher-SparseSAM as an example.
 ```bash
 python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt ssamf-sgd --rho 0.1 --weight_decay 1e-3 --sparsity 0.5 --num_samples 16 --update_freq 1 --seed [Maybe3107?] --wandb
 ```
+Training ResNet50 on ImageNet with SSAMF:
+```bash
+python train.py --epoch 90 --batch_size 256 --model resnet50 --dataset ImageNet_base --datadir [Path2Data] --opt ssamf-sgd --rho 0.7 --weight_decay 1e-4 --sparsity 0.5 --num_samples 128 --update_freq 1 --seed 1234
+```
 
 ## Citation
 ```bash
