@@ -71,19 +71,36 @@ In `configs/default_cfg.py`, we list the common args：
 - `--wandb`. action="store_true", if you want to record the information on wandb.
 
 ## Training
-Training Resnet18 on CIFAR10 with SGD as baseline.
+Training Resnet18 on CIFAR10 with SGD.
 ```bash
-python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt sgd --lr 0.05 --weight_decay 5e-4 --seed [Maybe3107?] --wandb
+python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt sgd --lr 0.05 --weight_decay 5e-4 --seed 1234 --wandb
+```
+
+Training WideResNet on CIFAR100 with SAM.
+```bash
+python train.py --model wideresnet28x10 --dataset CIFAR100_cutout --datadir [Path2Data] --opt sam-sgd --lr 0.05 --weight_decay 1e-3 --rho 0.2 --seed 1234 --wandb
 ```
 
 Take ResNet18 on CIFAR10 training with Fisher-SparseSAM as an example.
 ```bash
-python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt ssamf-sgd --rho 0.1 --weight_decay 1e-3 --sparsity 0.5 --num_samples 16 --update_freq 1 --seed [Maybe3107?] --wandb
+python train.py --model resnet18 --dataset CIFAR10_cutout --datadir [Path2Data] --opt ssamf-sgd --rho 0.1 --weight_decay 1e-3 --sparsity 0.5 --num_samples 16 --update_freq 1 --seed 1234 --wandb
 ```
+
+
 Training ResNet50 on ImageNet with SSAMF:
 ```bash
 python train.py --epochs 90 --batch_size 256 --model resnet50 --dataset ImageNet_base --datadir [Path2Data] --opt ssamf-sgd --rho 0.7 --weight_decay 1e-4 --sparsity 0.5 --num_samples 128 --update_freq 1 --seed 1234
 ```
+
+## Ablation Ref
+1. Visualization Loss Landscape
+
+Thanks [Visualizing the Loss Landscape of Neural Nets](https://arxiv.org/abs/1712.09913) [\[code\]](https://github.com/tomgoldstein/loss-landscape) for their work.
+
+2. Hessian Spectra
+
+Thanks https://github.com/amirgholami/PyHessian for their work.
+
 
 ## Citation
 ```bash
